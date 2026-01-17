@@ -6,22 +6,24 @@
     <title>Calculadora de Crochê - Fiolla</title>
     <style>
         /* =========================================
-           ESTILO FIOLLA - TEMA MAR & CROCHÊ
+           ESTILO FIOLLA - TEMA MAR & CROCHÊ V2
            ========================================= */
         :root {
-            --verde-fiolla: #1a4d43;  /* O verde elegante do logo */
-            --verde-suave: #2c7a6a;   /* Um verde mais claro para detalhes */
-            --creme-fundo: #f9f7f2;   /* Cor de areia bem clarinha */
-            --branco-vidro: rgba(255, 255, 255, 0.85); /* Efeito de vidro */
-            --sombra-luxo: 0 10px 40px rgba(26, 77, 67, 0.15);
+            --verde-fiolla: #1a4d43;
+            --verde-suave: #2c7a6a;
+            --creme-fundo: #f9f7f2;
+            --branco-vidro: rgba(255, 255, 255, 0.90); /* Mais opaco para leitura */
+            --sombra-luxo: 0 10px 40px rgba(26, 77, 67, 0.2);
         }
 
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
             background-color: var(--creme-fundo);
             
-            /* PADRÃO DE FUNDO "WHATSAPP" PERSONALIZADO (Conchas, Estrelas e Crochê) */
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a4d43' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cpath d='M25 25c3 0 5-2 5-5s-2-5-5-5-5 2-5 5 2 5 5 5zm0 2c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7zm30 30c3 0 5-2 5-5s-2-5-5-5-5 2-5 5 2 5 5 5zm0 2c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7z'/%3E%3Cpath d='M10 50c0-2.5 2-4.5 4.5-4.5S19 47.5 19 50s-2 4.5-4.5 4.5S10 52.5 10 50zm-2 0c0 3.6 2.9 6.5 6.5 6.5S21 53.6 21 50s-2.9-6.5-6.5-6.5S8 46.4 8 50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            /* NOVO FUNDO COM A IMAGEM DE CROCHÊ E MAR */
+            background-image: url('fundo.png');
+            background-repeat: repeat;
+            background-size: 500px auto; /* Tamanho do padrão */
             
             display: flex;
             justify-content: center;
@@ -35,8 +37,8 @@
         .calculadora-card {
             /* Design "Vidro Fosco" */
             background: var(--branco-vidro);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 2.5rem;
             border-radius: 24px;
             box-shadow: var(--sombra-luxo);
@@ -48,7 +50,7 @@
             overflow: hidden;
         }
 
-        /* Detalhe decorativo no topo do cartão (uma "onda" verde) */
+        /* Detalhe decorativo no topo do cartão */
         .calculadora-card::before {
             content: '';
             position: absolute;
@@ -61,7 +63,7 @@
 
         .banner-img {
             width: 100%;
-            max-width: 220px; /* Tamanho ajustado para elegância */
+            max-width: 220px;
             height: auto;
             margin-bottom: 1.5rem;
             display: block;
@@ -79,11 +81,11 @@
             color: var(--verde-fiolla);
             margin-bottom: 2rem;
             font-size: 1.6rem;
-            font-family: 'Georgia', serif; /* Fonte clássica para o título */
+            font-family: 'Georgia', serif;
             letter-spacing: 0.5px;
         }
 
-        /* INPUTS MODERNOS */
+        /* INPUTS */
         .input-group {
             margin-bottom: 1.2rem;
             text-align: left;
@@ -102,13 +104,12 @@
         input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid transparent; /* Borda invisível inicialmente */
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 1rem;
             box-sizing: border-box;
             color: var(--verde-fiolla);
             background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
         }
 
@@ -118,7 +119,7 @@
             outline: none;
         }
 
-        /* BOTÃO ELEGANTE */
+        /* BOTÃO */
         button {
             background: var(--verde-fiolla);
             color: white;
@@ -144,14 +145,14 @@
             transform: scale(0.98);
         }
 
-        /* ÁREA DE RESULTADO */
+        /* RESULTADO */
         #resultado {
             margin-top: 25px;
             background-color: #fff;
             border-radius: 16px;
             display: none;
             padding: 20px;
-            border: 1px dashed var(--verde-fiolla);
+            border: 2px solid var(--verde-fiolla);
             position: relative;
         }
 
@@ -180,7 +181,7 @@
             line-height: 1.6;
         }
 
-        /* FOTO FINAL REDONDA */
+        /* FOTO FINAL */
         .foto-final-container {
             margin-top: 30px;
             text-align: center;
@@ -195,7 +196,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--verde-fiolla);
-            padding: 3px; /* Espaço entre foto e borda */
+            padding: 3px;
             background-color: #fff;
             margin-bottom: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -245,7 +246,6 @@
 
     <script>
         function calcularPreco() {
-            // Substitui vírgula por ponto caso o usuário digite errado
             let custoStr = document.getElementById('custoLinhas').value.replace(',', '.');
             let difStr = document.getElementById('dificuldade').value.replace(',', '.');
 
