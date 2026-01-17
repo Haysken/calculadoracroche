@@ -35,12 +35,12 @@
             border-top: 5px solid var(--verde-fiolla);
         }
 
+        /* Estilo para o banner */
         .banner-img {
             width: 100%;
-            max-width: 300px;
+            max-width: 250px; /* Um pouco menor para ficar mais delicado */
             height: auto;
             margin-bottom: 1rem;
-            border-radius: 8px;
         }
 
         h1 {
@@ -124,12 +124,34 @@
             text-align: left;
             line-height: 1.6;
         }
+
+        /* Estilos para a foto e o texto final */
+        .foto-final-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .foto-vitoria {
+            width: 120px; /* Tamanho da foto */
+            height: 120px;
+            border-radius: 50%; /* Deixa a foto redonda */
+            object-fit: cover; /* Corta a imagem para caber no círculo */
+            border: 3px solid var(--verde-fiolla);
+            margin-bottom: 10px;
+        }
+
+        .texto-final-amor {
+            font-family: 'Georgia', serif;
+            color: var(--verde-fiolla);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <div class="calculadora-card">
-        <img src="image_3.png" alt="Banner Fiolla Crochê" class="banner-img">
+        <img src="banner-fiolla.png" alt="Banner Fiolla Crochê" class="banner-img">
         <h1>Precificação de Crochê</h1>
         
         <div class="input-group">
@@ -150,6 +172,11 @@
             <hr style="border: 0; border-top: 1px solid var(--verde-fiolla); margin: 15px 0; opacity: 0.3;">
             <div class="detalhes" id="detalhesCalculo">
                 </div>
+            
+            <div class="foto-final-container">
+                <img src="foto-vitoria.png" alt="Foto Vitória" class="foto-vitoria">
+                <div class="texto-final-amor">Diógenes ❤️ Vitória</div>
+            </div>
         </div>
     </div>
 
