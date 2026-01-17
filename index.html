@@ -1,3 +1,11 @@
+Com certeza! Cobrar adiantamento (o famoso "sinal") é essencial para quem trabalha com encomenda, pois garante o compromisso do cliente e cobre o custo dos materiais.
+
+Adicionei uma caixa de destaque logo abaixo do preço final mostrando exatamente quanto ela deve cobrar de entrada (50% do valor).
+
+Aqui está o código completo atualizado. Pode substituir tudo no seu index.html:
+
+HTML
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -39,14 +47,14 @@
             -webkit-backdrop-filter: blur(10px);
             
             border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 3rem 2rem 2.5rem 2rem; /* Mais espaço no topo para o banner */
+            padding: 3rem 2rem 2.5rem 2rem;
             border-radius: 30px;
             box-shadow: var(--sombra-luxo);
             width: 100%;
             max-width: 400px;
             text-align: center;
             position: relative;
-            margin-top: 40px; /* Espaço extra para o banner "saindo" do card se quiser */
+            margin-top: 40px;
         }
 
         /* Detalhe decorativo no topo */
@@ -63,23 +71,19 @@
 
         /* --- BANNER CIRCULAR --- */
         .banner-img {
-            width: 160px;  /* Largura fixa */
-            height: 160px; /* Altura igual à largura (quadrado perfeito) */
-            border-radius: 50%; /* Transforma o quadrado em círculo */
-            object-fit: cover;  /* Garante que a imagem preencha o círculo sem esticar */
-            
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
             display: block;
             margin: 0 auto 1.5rem auto;
-            
-            /* Borda decorativa para destacar */
             border: 5px solid rgba(255, 255, 255, 0.7);
             box-shadow: 0 8px 20px rgba(26, 77, 67, 0.15);
-            
             transition: transform 0.3s ease;
         }
         
         .banner-img:hover {
-            transform: scale(1.05) rotate(2deg); /* Efeito divertido ao passar o mouse */
+            transform: scale(1.05) rotate(2deg);
         }
 
         h1 {
@@ -155,7 +159,7 @@
         /* RESULTADO */
         #resultado {
             margin-top: 25px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
             display: none;
             padding: 20px;
@@ -175,6 +179,20 @@
             font-weight: 800;
             color: var(--verde-fiolla);
             margin: 5px 0 15px 0;
+        }
+
+        /* ESTILO NOVO: CAIXA DE ADIANTAMENTO */
+        .adiantamento-box {
+            background-color: rgba(26, 77, 67, 0.1);
+            color: var(--verde-fiolla);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border: 1px dashed var(--verde-fiolla);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .detalhes {
@@ -241,6 +259,11 @@
             <div class="preco-titulo">Valor Sugerido</div>
             <div class="preco-final" id="valorFinal">R$ 0,00</div>
             
+            <div class="adiantamento-box">
+                <span>💰 Sinal (50%):</span>
+                <span id="valorAdiantamento" style="font-size: 1.2rem;">R$ 0,00</span>
+            </div>
+            
             <div class="detalhes" id="detalhesCalculo">
                 </div>
             
@@ -269,18 +292,23 @@
                 return;
             }
 
+            // Cálculos
             let valorBase = custo * 2;
             let valorMaoDeObra = dificuldade * 30;
             let precoTotal = valorBase + valorMaoDeObra;
+            let valorAdiantamento = precoTotal / 2; // Calcula os 50%
 
             const divResultado = document.getElementById('resultado');
             const spanValorFinal = document.getElementById('valorFinal');
+            const spanValorAdiantamento = document.getElementById('valorAdiantamento');
             const divDetalhes = document.getElementById('detalhesCalculo');
 
             let formatoMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
             let dificuldadeFormatada = dificuldade.toLocaleString('pt-BR');
 
+            // Atualiza os textos na tela
             spanValorFinal.innerText = formatoMoeda.format(precoTotal);
+            spanValorAdiantamento.innerText = formatoMoeda.format(valorAdiantamento);
             
             divDetalhes.innerHTML = `
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
