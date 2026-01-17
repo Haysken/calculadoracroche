@@ -9,10 +9,10 @@
            DESIGN E CORES (Baseado na Fiolla)
            ========================================= */
         :root {
-            --verde-fiolla: #1a4d43; /* Verde escuro elegante */
-            --creme-fundo: #f5f1e8;  /* Fundo da página */
-            --creme-card: #fffcf5;   /* Fundo do cartão */
-            --verde-claro: #e0eae7;  /* Fundo do resultado */
+            --verde-fiolla: #1a4d43; 
+            --creme-fundo: #f5f1e8; 
+            --creme-card: #fffcf5;
+            --verde-claro: #e0eae7;
         }
 
         body {
@@ -173,7 +173,7 @@
 <body>
 
     <div class="calculadora-card">
-        <img src="banner.png" alt="Banner Fiolla Crochê" class="banner-img">
+        <img src="topo.png" alt="Banner Fiolla Crochê" class="banner-img">
         
         <h1>Precificação de Crochê</h1>
         
@@ -204,40 +204,29 @@
     </div>
 
     <script>
-        // =========================================
-        // LÓGICA DA CALCULADORA
-        // =========================================
         function calcularPreco() {
-            // 1. Pega os valores (usando parseFloat para aceitar centavos e decimais)
             let custo = parseFloat(document.getElementById('custoLinhas').value);
             let dificuldade = parseFloat(document.getElementById('dificuldade').value);
 
-            // 2. Verifica se está tudo preenchido
             if (isNaN(custo) || isNaN(dificuldade)) {
                 alert("Por favor, preencha os campos com valores válidos.");
                 return;
             }
 
-            // 3. Verifica se a dificuldade está entre 0 e 10
             if (dificuldade < 0 || dificuldade > 10) {
                 alert("A dificuldade deve ser um número entre 0 e 10.");
                 return;
             }
 
-            // 4. A FÓRMULA MÁGICA
-            // Preço = (2 x Custo) + (30 x Dificuldade)
             let valorBase = custo * 2;
             let valorMaoDeObra = dificuldade * 30;
             let precoTotal = valorBase + valorMaoDeObra;
 
-            // 5. Exibe os resultados na tela
             const divResultado = document.getElementById('resultado');
             const spanValorFinal = document.getElementById('valorFinal');
             const divDetalhes = document.getElementById('detalhesCalculo');
 
-            // Formata para dinheiro brasileiro (R$)
             let formatoMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-            // Formata o número da dificuldade (ex: troca ponto por vírgula no 8.5)
             let dificuldadeFormatada = dificuldade.toLocaleString('pt-BR');
 
             spanValorFinal.innerText = formatoMoeda.format(precoTotal);
@@ -248,10 +237,7 @@
                 2️⃣ Mão de obra (Nível ${dificuldadeFormatada}): <b>${formatoMoeda.format(valorMaoDeObra)}</b>
             `;
 
-            // Mostra a caixa de resultado que estava escondida
             divResultado.style.display = 'block';
-            
-            // Rola a tela suavemente até o resultado (útil no celular)
             divResultado.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
