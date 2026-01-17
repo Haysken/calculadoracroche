@@ -1,3 +1,20 @@
+Entendi perfeitamente. Você quer algo que converse com a identidade visual da Fiolla: delicado, com elementos do mar (conchas, estrelas) e do crochê, mas com aquele visual moderno e sutil de "papel de parede de WhatsApp".
+
+Preparei um design exclusivo para você.
+
+O que mudou neste design?
+Fundo Personalizado Fiolla: Criei um "papel de parede" digital usando ícones repetidos de Conchas 🐚, Estrelas do Mar ⭐ e Novelos 🧶. Eles ficam bem clarinhos no fundo, criando uma textura elegante sem poluir.
+
+Cartão de Vidro (Glassmorphism): O formulário agora parece uma placa de vidro flutuando sobre esse fundo do mar. É o estilo mais moderno da web hoje.
+
+Cores da Marca: Usei exatamente o verde escuro e o creme da sua marca para tudo conversar.
+
+Botão e Detalhes: O botão tem um brilho suave e os campos são arredondados e macios.
+
+Aqui está o código definitivo. Copie e substitua tudo no seu index.html:
+
+HTML
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,59 +23,86 @@
     <title>Calculadora de Crochê - Fiolla</title>
     <style>
         /* =========================================
-           DESIGN E CORES (Baseado na Fiolla)
+           ESTILO FIOLLA - TEMA MAR & CROCHÊ
            ========================================= */
         :root {
-            --verde-fiolla: #1a4d43; 
-            --creme-fundo: #f5f1e8; 
-            --creme-card: #fffcf5;
-            --verde-claro: #e0eae7;
+            --verde-fiolla: #1a4d43;  /* O verde elegante do logo */
+            --verde-suave: #2c7a6a;   /* Um verde mais claro para detalhes */
+            --creme-fundo: #f9f7f2;   /* Cor de areia bem clarinha */
+            --branco-vidro: rgba(255, 255, 255, 0.85); /* Efeito de vidro */
+            --sombra-luxo: 0 10px 40px rgba(26, 77, 67, 0.15);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
             background-color: var(--creme-fundo);
+            
+            /* PADRÃO DE FUNDO "WHATSAPP" PERSONALIZADO (Conchas, Estrelas e Crochê) */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a4d43' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cpath d='M25 25c3 0 5-2 5-5s-2-5-5-5-5 2-5 5 2 5 5 5zm0 2c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7zm30 30c3 0 5-2 5-5s-2-5-5-5-5 2-5 5 2 5 5 5zm0 2c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7z'/%3E%3Cpath d='M10 50c0-2.5 2-4.5 4.5-4.5S19 47.5 19 50s-2 4.5-4.5 4.5S10 52.5 10 50zm-2 0c0 3.6 2.9 6.5 6.5 6.5S21 53.6 21 50s-2.9-6.5-6.5-6.5S8 46.4 8 50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            color: var(--verde-fiolla);
         }
 
         .calculadora-card {
-            background-color: var(--creme-card);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(26, 77, 67, 0.15);
+            /* Design "Vidro Fosco" */
+            background: var(--branco-vidro);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--sombra-luxo);
             width: 100%;
             max-width: 400px;
             text-align: center;
-            border-top: 5px solid var(--verde-fiolla);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* BANNER DO TOPO */
+        /* Detalhe decorativo no topo do cartão (uma "onda" verde) */
+        .calculadora-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--verde-fiolla), var(--verde-suave));
+        }
+
         .banner-img {
             width: 100%;
-            max-width: 300px;
+            max-width: 220px; /* Tamanho ajustado para elegância */
             height: auto;
-            margin-bottom: 1rem;
-            border-radius: 8px;
+            margin-bottom: 1.5rem;
             display: block;
             margin-left: auto;
             margin-right: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            transition: transform 0.3s;
+        }
+        
+        .banner-img:hover {
+            transform: scale(1.02);
         }
 
         h1 {
             color: var(--verde-fiolla);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-size: 1.6rem;
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', serif; /* Fonte clássica para o título */
+            letter-spacing: 0.5px;
         }
 
-        /* CAMPOS DE TEXTO */
+        /* INPUTS MODERNOS */
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             text-align: left;
         }
 
@@ -66,45 +110,53 @@
             display: block;
             margin-bottom: 0.5rem;
             color: var(--verde-fiolla);
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
+            padding: 14px 16px;
+            border: 2px solid transparent; /* Borda invisível inicialmente */
+            border-radius: 12px;
             font-size: 1rem;
             box-sizing: border-box;
             color: var(--verde-fiolla);
             background-color: #fff;
-            transition: border-color 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
         }
 
         input:focus {
-            border-color: var(--verde-fiolla);
+            border-color: var(--verde-suave);
+            box-shadow: 0 4px 12px rgba(44, 122, 106, 0.15);
             outline: none;
         }
 
-        /* BOTÃO */
+        /* BOTÃO ELEGANTE */
         button {
-            background-color: var(--verde-fiolla);
+            background: var(--verde-fiolla);
             color: white;
             border: none;
-            padding: 14px;
+            padding: 16px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: background 0.3s, transform 0.1s;
-            margin-top: 10px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(26, 77, 67, 0.2);
         }
 
         button:hover {
-            background-color: #133a32;
+            background-color: #143d35;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(26, 77, 67, 0.3);
         }
-
+        
         button:active {
             transform: scale(0.98);
         }
@@ -112,38 +164,40 @@
         /* ÁREA DE RESULTADO */
         #resultado {
             margin-top: 25px;
+            background-color: #fff;
+            border-radius: 16px;
+            display: none;
             padding: 20px;
-            background-color: var(--verde-claro);
-            border-radius: 10px;
-            display: none; /* Começa escondido */
-            border: 1px solid #cce0dc;
+            border: 1px dashed var(--verde-fiolla);
+            position: relative;
         }
 
         .preco-titulo {
-            font-weight: bold;
-            color: var(--verde-fiolla);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
             margin-bottom: 5px;
         }
 
         .preco-final {
-            font-size: 2.2rem;
-            font-weight: bold;
+            font-size: 2.4rem;
+            font-weight: 800;
             color: var(--verde-fiolla);
-            margin: 10px 0;
+            margin: 5px 0 15px 0;
         }
         
         .detalhes {
-            font-size: 0.95rem;
-            color: var(--verde-fiolla);
-            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #555;
             text-align: left;
+            background-color: var(--creme-fundo);
+            padding: 12px;
+            border-radius: 8px;
             line-height: 1.6;
-            background: rgba(255,255,255,0.5);
-            padding: 10px;
-            border-radius: 5px;
         }
 
-        /* ÁREA DA FOTO E LEGENDA FINAL */
+        /* FOTO FINAL REDONDA */
         .foto-final-container {
             margin-top: 30px;
             text-align: center;
@@ -153,20 +207,23 @@
         }
 
         .foto-vitoria {
-            width: 110px; 
-            height: 110px;
-            border-radius: 50%; /* Deixa a foto redonda */
-            object-fit: cover;  /* Ajusta a foto para não esticar */
-            border: 4px solid var(--verde-fiolla);
+            width: 90px; 
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--verde-fiolla);
+            padding: 3px; /* Espaço entre foto e borda */
+            background-color: #fff;
             margin-bottom: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .texto-final-amor {
             font-family: 'Georgia', serif;
             color: var(--verde-fiolla);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
+            font-style: italic;
         }
     </style>
 </head>
@@ -178,19 +235,19 @@
         <h1>Precificação de Crochê</h1>
         
         <div class="input-group">
-            <label for="custoLinhas">🧶 Custo total das linhas (R$)</label>
-            <input type="number" id="custoLinhas" placeholder="Ex: 350.00" step="0.01">
+            <label for="custoLinhas">🧶 Custo das linhas (R$)</label>
+            <input type="number" id="custoLinhas" placeholder="Ex: 350,00" step="0.01">
         </div>
 
         <div class="input-group">
             <label for="dificuldade">⭐ Dificuldade (0 a 10)</label>
-            <input type="number" id="dificuldade" placeholder="Ex: 8.5" min="0" max="10" step="0.5">
+            <input type="number" id="dificuldade" placeholder="Ex: 8,5" min="0" max="10" step="0.5">
         </div>
 
         <button onclick="calcularPreco()">Calcular Preço</button>
 
         <div id="resultado">
-            <div class="preco-titulo">Preço sugerido:</div>
+            <div class="preco-titulo">Valor Sugerido</div>
             <div class="preco-final" id="valorFinal">R$ 0,00</div>
             
             <div class="detalhes" id="detalhesCalculo">
@@ -205,8 +262,12 @@
 
     <script>
         function calcularPreco() {
-            let custo = parseFloat(document.getElementById('custoLinhas').value);
-            let dificuldade = parseFloat(document.getElementById('dificuldade').value);
+            // Substitui vírgula por ponto caso o usuário digite errado
+            let custoStr = document.getElementById('custoLinhas').value.replace(',', '.');
+            let difStr = document.getElementById('dificuldade').value.replace(',', '.');
+
+            let custo = parseFloat(custoStr);
+            let dificuldade = parseFloat(difStr);
 
             if (isNaN(custo) || isNaN(dificuldade)) {
                 alert("Por favor, preencha os campos com valores válidos.");
@@ -232,13 +293,18 @@
             spanValorFinal.innerText = formatoMoeda.format(precoTotal);
             
             divDetalhes.innerHTML = `
-                <b>Resumo do Cálculo:</b><br>
-                1️⃣ Material + Lucro (2x): <b>${formatoMoeda.format(valorBase)}</b><br>
-                2️⃣ Mão de obra (Nível ${dificuldadeFormatada}): <b>${formatoMoeda.format(valorMaoDeObra)}</b>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>📦 Material + Lucro:</span>
+                    <b>${formatoMoeda.format(valorBase)}</b>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>🪡 Mão de obra (Nível ${dificuldadeFormatada}):</span>
+                    <b>${formatoMoeda.format(valorMaoDeObra)}</b>
+                </div>
             `;
 
             divResultado.style.display = 'block';
-            divResultado.scrollIntoView({ behavior: 'smooth' });
+            divResultado.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
 </body>
