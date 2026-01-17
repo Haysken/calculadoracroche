@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Crochê - Fiolla</title>
     <style>
-        /* Estilos (CSS) - Cores e Design Baseados no Banner */
+        /* =========================================
+           DESIGN E CORES (Baseado na Fiolla)
+           ========================================= */
         :root {
-            --verde-fiolla: #1a4d43; /* Verde escuro do banner */
-            --creme-fundo: #f5f1e8; /* Cor de fundo do banner */
-            --creme-claro: #fffcf5; /* Cor para fundo do card */
-            --verde-claro-resultado: #e0eae7; /* Fundo para o resultado */
+            --verde-fiolla: #1a4d43; /* Verde escuro elegante */
+            --creme-fundo: #f5f1e8;  /* Fundo da página */
+            --creme-card: #fffcf5;   /* Fundo do cartão */
+            --verde-claro: #e0eae7;  /* Fundo do resultado */
         }
 
         body {
@@ -25,7 +27,7 @@
         }
 
         .calculadora-card {
-            background-color: var(--creme-claro);
+            background-color: var(--creme-card);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(26, 77, 67, 0.15);
@@ -35,21 +37,26 @@
             border-top: 5px solid var(--verde-fiolla);
         }
 
-        /* Estilo para o banner */
+        /* BANNER DO TOPO */
         .banner-img {
             width: 100%;
-            max-width: 250px; /* Um pouco menor para ficar mais delicado */
+            max-width: 300px;
             height: auto;
             margin-bottom: 1rem;
+            border-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h1 {
             color: var(--verde-fiolla);
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-family: 'Georgia', serif; /* Fonte mais clássica para combinar */
+            font-size: 1.6rem;
+            font-family: 'Georgia', serif;
         }
 
+        /* CAMPOS DE TEXTO */
         .input-group {
             margin-bottom: 1rem;
             text-align: left;
@@ -64,13 +71,14 @@
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 2px solid #d1d5db;
             border-radius: 8px;
             font-size: 1rem;
             box-sizing: border-box;
             color: var(--verde-fiolla);
             background-color: #fff;
+            transition: border-color 0.3s;
         }
 
         input:focus {
@@ -78,72 +86,86 @@
             outline: none;
         }
 
+        /* BOTÃO */
         button {
             background-color: var(--verde-fiolla);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             width: 100%;
             border-radius: 8px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.1s;
             margin-top: 10px;
             font-weight: bold;
         }
 
         button:hover {
-            background-color: #133a32; /* Um tom mais escuro para o hover */
+            background-color: #133a32;
         }
 
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* ÁREA DE RESULTADO */
         #resultado {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--verde-claro-resultado);
-            border-radius: 8px;
-            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--verde-claro);
+            border-radius: 10px;
+            display: none; /* Começa escondido */
             border: 1px solid #cce0dc;
         }
 
         .preco-titulo {
             font-weight: bold;
             color: var(--verde-fiolla);
+            margin-bottom: 5px;
         }
 
         .preco-final {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: var(--verde-fiolla);
             margin: 10px 0;
         }
         
         .detalhes {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--verde-fiolla);
-            margin-top: 5px;
+            margin-top: 15px;
             text-align: left;
             line-height: 1.6;
+            background: rgba(255,255,255,0.5);
+            padding: 10px;
+            border-radius: 5px;
         }
 
-        /* Estilos para a foto e o texto final */
+        /* ÁREA DA FOTO E LEGENDA FINAL */
         .foto-final-container {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .foto-vitoria {
-            width: 120px; /* Tamanho da foto */
-            height: 120px;
+            width: 110px; 
+            height: 110px;
             border-radius: 50%; /* Deixa a foto redonda */
-            object-fit: cover; /* Corta a imagem para caber no círculo */
-            border: 3px solid var(--verde-fiolla);
+            object-fit: cover;  /* Ajusta a foto para não esticar */
+            border: 4px solid var(--verde-fiolla);
             margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .texto-final-amor {
             font-family: 'Georgia', serif;
             color: var(--verde-fiolla);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
         }
     </style>
@@ -151,17 +173,18 @@
 <body>
 
     <div class="calculadora-card">
-        <img src="banner-fiolla.png" alt="Banner Fiolla Crochê" class="banner-img">
+        <img src="banner.jpg" alt="Banner Fiolla Crochê" class="banner-img">
+        
         <h1>Precificação de Crochê</h1>
         
         <div class="input-group">
-            <label for="custoLinhas">Custo total das linhas (R$)</label>
+            <label for="custoLinhas">🧶 Custo total das linhas (R$)</label>
             <input type="number" id="custoLinhas" placeholder="Ex: 350.00" step="0.01">
         </div>
 
         <div class="input-group">
-            <label for="dificuldade">Nível de Dificuldade (0 a 10)</label>
-            <input type="number" id="dificuldade" placeholder="0 a 10, ex: 8.5" min="0" max="10" step="0.5">
+            <label for="dificuldade">⭐ Dificuldade (0 a 10)</label>
+            <input type="number" id="dificuldade" placeholder="Ex: 8.5" min="0" max="10" step="0.5">
         </div>
 
         <button onclick="calcularPreco()">Calcular Preço</button>
@@ -169,61 +192,70 @@
         <div id="resultado">
             <div class="preco-titulo">Preço sugerido:</div>
             <div class="preco-final" id="valorFinal">R$ 0,00</div>
-            <hr style="border: 0; border-top: 1px solid var(--verde-fiolla); margin: 15px 0; opacity: 0.3;">
+            
             <div class="detalhes" id="detalhesCalculo">
                 </div>
             
             <div class="foto-final-container">
-                <img src="foto-vitoria.png" alt="Foto Vitória" class="foto-vitoria">
+                <img src="vitoria.jpeg" alt="Vitória" class="foto-vitoria">
                 <div class="texto-final-amor">Diógenes ❤️ Vitória</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Lógica (JavaScript) - Atualizada para aceitar decimais
+        // =========================================
+        // LÓGICA DA CALCULADORA
+        // =========================================
         function calcularPreco() {
-            // 1. Pegar os valores dos inputs (AGORA USANDO parseFloat)
+            // 1. Pega os valores (usando parseFloat para aceitar centavos e decimais)
             let custo = parseFloat(document.getElementById('custoLinhas').value);
             let dificuldade = parseFloat(document.getElementById('dificuldade').value);
 
-            // Validação simples
+            // 2. Verifica se está tudo preenchido
             if (isNaN(custo) || isNaN(dificuldade)) {
-                alert("Por favor, preencha todos os campos corretamente com números.");
+                alert("Por favor, preencha os campos com valores válidos.");
                 return;
             }
 
+            // 3. Verifica se a dificuldade está entre 0 e 10
             if (dificuldade < 0 || dificuldade > 10) {
-                alert("A dificuldade deve ser entre 0 e 10.");
+                alert("A dificuldade deve ser um número entre 0 e 10.");
                 return;
             }
 
-            // 2. Aplicar a fórmula
-            // Preço = 2 * custo + 30 * dificuldade
+            // 4. A FÓRMULA MÁGICA
+            // Preço = (2 x Custo) + (30 x Dificuldade)
             let valorBase = custo * 2;
             let valorMaoDeObra = dificuldade * 30;
             let precoTotal = valorBase + valorMaoDeObra;
 
-            // 3. Mostrar o resultado na tela
+            // 5. Exibe os resultados na tela
             const divResultado = document.getElementById('resultado');
             const spanValorFinal = document.getElementById('valorFinal');
             const divDetalhes = document.getElementById('detalhesCalculo');
 
-            // Formatando para Dinheiro Brasileiro (R$)
+            // Formata para dinheiro brasileiro (R$)
             let formatoMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+            // Formata o número da dificuldade (ex: troca ponto por vírgula no 8.5)
+            let dificuldadeFormatada = dificuldade.toLocaleString('pt-BR');
 
             spanValorFinal.innerText = formatoMoeda.format(precoTotal);
             
-            // Usando toLocaleString para mostrar o número decimal com vírgula (ex: 8,5)
-            let dificuldadeFormatada = dificuldade.toLocaleString('pt-BR');
-
             divDetalhes.innerHTML = `
-                1️⃣ Base (Material + Lucro): <b>${formatoMoeda.format(valorBase)}</b><br>
-                2️⃣ Mão de obra (Dificuldade ${dificuldadeFormatada}): <b>${formatoMoeda.format(valorMaoDeObra)}</b>
+                <b>Resumo do Cálculo:</b><br>
+                1️⃣ Material + Lucro (2x): <b>${formatoMoeda.format(valorBase)}</b><br>
+                2️⃣ Mão de obra (Nível ${dificuldadeFormatada}): <b>${formatoMoeda.format(valorMaoDeObra)}</b>
             `;
 
+            // Mostra a caixa de resultado que estava escondida
             divResultado.style.display = 'block';
+            
+            // Rola a tela suavemente até o resultado (útil no celular)
+            divResultado.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
+</body>
+</html>
 </body>
 </html>
