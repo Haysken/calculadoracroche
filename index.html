@@ -6,24 +6,22 @@
     <title>Calculadora de Crochê - Fiolla</title>
     <style>
         /* =========================================
-           ESTILO FIOLLA - TEMA MAR & CROCHÊ V2
+           ESTILO FIOLLA - TEMA MAR & CROCHÊ (FINAL)
            ========================================= */
         :root {
             --verde-fiolla: #1a4d43;
             --verde-suave: #2c7a6a;
-            --creme-fundo: #f9f7f2;
-            --branco-vidro: rgba(255, 255, 255, 0.90); /* Mais opaco para leitura */
+            --creme-fundo: #f9f7f2; /* A cor exata do fundo do banner */
             --sombra-luxo: 0 10px 40px rgba(26, 77, 67, 0.2);
         }
 
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background-color: var(--creme-fundo);
-            
-            /* NOVO FUNDO COM A IMAGEM DE CROCHÊ E MAR */
+            /* Fundo com a imagem de padrão */
+            background-color: #f0f0f0; /* Cor de fundo neutra caso a imagem demore */
             background-image: url('fundo.png');
             background-repeat: repeat;
-            background-size: 500px auto; /* Tamanho do padrão */
+            background-size: 400px auto;
             
             display: flex;
             justify-content: center;
@@ -35,17 +33,14 @@
         }
 
         .calculadora-card {
-            /* Design "Vidro Fosco" */
-            background: var(--branco-vidro);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            /* Fundo SÓLIDO na cor creme da marca */
+            background-color: var(--creme-fundo);
             padding: 2.5rem;
             border-radius: 24px;
             box-shadow: var(--sombra-luxo);
             width: 100%;
             max-width: 400px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.6);
             position: relative;
             overflow: hidden;
         }
@@ -69,7 +64,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            /* Sombra removida para fundir melhor com o fundo */
             transition: transform 0.3s;
         }
         
@@ -109,7 +104,7 @@
             font-size: 1rem;
             box-sizing: border-box;
             color: var(--verde-fiolla);
-            background-color: #fff;
+            background-color: #fff; /* Fundo branco para destaque */
             transition: all 0.3s ease;
         }
 
@@ -153,7 +148,6 @@
             display: none;
             padding: 20px;
             border: 2px solid var(--verde-fiolla);
-            position: relative;
         }
 
         .preco-titulo {
@@ -175,10 +169,12 @@
             font-size: 0.9rem;
             color: #555;
             text-align: left;
-            background-color: var(--creme-fundo);
-            padding: 12px;
-            border-radius: 8px;
+            /* Fundo branco para destacar do cartão creme */
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 12px;
             line-height: 1.6;
+            border: 1px solid #eee;
         }
 
         /* FOTO FINAL */
