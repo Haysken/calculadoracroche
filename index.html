@@ -1,3 +1,13 @@
+Essa é uma alteração simples que muda completamente a cara do site!
+
+Para deixar o banner (topo.png) em formato de círculo perfeito, precisamos apenas forçar que a largura e a altura sejam iguais e aplicar uma borda arredondada de 50%.
+
+Também adicionei uma borda branca semitransparente ao redor do círculo para ele se destacar do fundo de vidro, parecendo um "selo" ou uma foto de perfil profissional.
+
+Aqui está o código completo atualizado:
+
+HTML
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +16,7 @@
     <title>Calculadora de Crochê - Fiolla</title>
     <style>
         /* =========================================
-           ESTILO FIOLLA - TEMA VIDRO (TRANSPARENTE)
+           ESTILO FIOLLA - TEMA VIDRO & CÍRCULOS
            ========================================= */
         :root {
             --verde-fiolla: #1a4d43;
@@ -17,7 +27,7 @@
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
             
-            /* Imagem de Fundo */
+            /* Imagem de Fundo (fundo.png) */
             background-color: #f0f0f0; 
             background-image: url('fundo.png');
             background-repeat: repeat;
@@ -33,26 +43,20 @@
         }
 
         .calculadora-card {
-            /* --- O SEGREDO DA TRANSPARÊNCIA ESTÁ AQUI --- */
+            /* Fundo de Vidro Transparente */
+            background-color: rgba(249, 247, 242, 0.85); /* 85% de opacidade */
+            backdrop-filter: blur(10px); /* Desfoque do fundo */
+            -webkit-backdrop-filter: blur(10px);
             
-            /* Cor creme (f9f7f2) com 88% de opacidade (0.88) */
-            background-color: rgba(249, 247, 242, 0.88);
-            
-            /* Efeito de desfoque no fundo (Vidro Fosco) */
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            
-            /* Borda fina e semi-transparente para dar acabamento de vidro */
             border: 1px solid rgba(255, 255, 255, 0.6);
-            
-            padding: 2.5rem;
-            border-radius: 24px;
+            padding: 3rem 2rem 2.5rem 2rem; /* Mais espaço no topo para o banner */
+            border-radius: 30px;
             box-shadow: var(--sombra-luxo);
             width: 100%;
             max-width: 400px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            margin-top: 40px; /* Espaço extra para o banner "saindo" do card se quiser */
         }
 
         /* Detalhe decorativo no topo */
@@ -64,23 +68,28 @@
             width: 100%;
             height: 6px;
             background: linear-gradient(90deg, var(--verde-fiolla), var(--verde-suave));
+            border-radius: 30px 30px 0 0;
         }
 
+        /* --- BANNER CIRCULAR --- */
         .banner-img {
-            width: 100%;
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 1.5rem;
+            width: 160px;  /* Largura fixa */
+            height: 160px; /* Altura igual à largura (quadrado perfeito) */
+            border-radius: 50%; /* Transforma o quadrado em círculo */
+            object-fit: cover;  /* Garante que a imagem preencha o círculo sem esticar */
+            
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            /* Mistura a imagem levemente com o fundo (opcional, ajuda se o png tiver fundo) */
-            mix-blend-mode: multiply; 
-            transition: transform 0.3s;
+            margin: 0 auto 1.5rem auto;
+            
+            /* Borda decorativa para destacar */
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 20px rgba(26, 77, 67, 0.15);
+            
+            transition: transform 0.3s ease;
         }
         
         .banner-img:hover {
-            transform: scale(1.02);
+            transform: scale(1.05) rotate(2deg); /* Efeito divertido ao passar o mouse */
         }
 
         h1 {
@@ -115,8 +124,7 @@
             font-size: 1rem;
             box-sizing: border-box;
             color: var(--verde-fiolla);
-            /* Fundo branco com leve transparência para destacar do cartão */
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.7);
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
@@ -157,7 +165,7 @@
         /* RESULTADO */
         #resultado {
             margin-top: 25px;
-            background-color: rgba(255, 255, 255, 0.9); /* Quase sólido para leitura */
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
             display: none;
             padding: 20px;
@@ -183,7 +191,7 @@
             font-size: 0.9rem;
             color: #555;
             text-align: left;
-            background-color: rgba(249, 247, 242, 0.5); /* Fundo sutil nos detalhes */
+            background-color: rgba(249, 247, 242, 0.5);
             padding: 15px;
             border-radius: 12px;
             line-height: 1.6;
